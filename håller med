@@ -1,0 +1,27 @@
+import sys
+
+import pygame
+
+pygame.init()
+
+screen = pygame.display.set_mode(1920, 1080)
+clock = pygame.time.Clock()
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+
+    screen.fill('black')
+
+    clock.tick(60)
+    pygame.display.flip()
+
+snake_head_sprite = pygame.image.load()
+snake_body_sprite = pygame.image.load()
+snake_head_position.y =
+snake_head_position.x =
+
+def draw_snake_head():
+    if snake_head:
+        screen.blit(snake_head_sprite, (snake_head_position.x, snake_head_position.y))
