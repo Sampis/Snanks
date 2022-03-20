@@ -15,6 +15,7 @@ while True:
             sys.exit()
 
     screen.fill("black")
+    game.run()
     game.intro_screen()
     clock.tick(60)
     pygame.display.flip()

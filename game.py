@@ -1,4 +1,5 @@
 import pygame
+from snank import Snank
 from settings import *
 
 
@@ -9,17 +10,18 @@ class Game:
         self.snank = pygame.sprite.GroupSingle()
         self.menu_font = pygame.font.SysFont("IMPACT", 100)
         self.intro_screen()
+        self.player1 = Snank(screen, (screen_width/4-100, screen_height/2))
+        self.player2 = Snank(screen, (screen_width/4*3, screen_height/2))
 
     def intro_screen(self):
-        pygame.draw.rect(self.display_surface, (255, 255, 255), (screen_width/2-200, screen_height/2+100, 400, 100), 4)
-        pygame.draw.rect(self.display_surface, (255, 255, 255), (screen_width/2-200, screen_height/2+225, 400, 100), 4)
-        pygame.draw.rect(self.display_surface, (255, 255, 255), (screen_width/2-200, screen_height/2+350, 400, 100), 4)
-        start_text = self.menu_font.render(f"Start", 1, ("white"))
-        start_text = pygame.transform.scale(start_text, (400, 125))
-        self.display_surface.blit(start_text, (screen_width/2-200, screen_height/2+87.5))
-        pygame.draw.circle(self.display_surface, ("red"), (screen_width/2, screen_height/2), 1)
+        pass
 
+    def main_game(self):
+        pass
 
+    def end_screen(self):
+        pass
 
     def run(self):
-        pass
+        self.player1.run()
+        self.player2.run()
