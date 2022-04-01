@@ -11,16 +11,15 @@ class Game:
 
         self.snank = pygame.sprite.GroupSingle()
         self.menu_font = pygame.font.SysFont("IMPACT", 60)
-        self.intro_screen()
         self.player1 = Snank(screen, (screen_width/4-20, screen_height/2), 0)
         self.player2 = Snank(screen, (screen_width/4*3, screen_height/2), 1)
+        self.intro_screen()
 
     def intro_screen(self):
         self.main_game()
 
     def main_game(self):
-        #self.run()
-        pass
+        self.run()
 
     def end_screen(self):
         pass

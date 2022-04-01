@@ -9,8 +9,7 @@ class Snank:
         self.id = id
         self.speed = 3
         self.direction = pygame.math.Vector2(0, 0)
-        self.image = pygame.Surface((20, 20))
-        self.image.fill("green")
+        self.image = pygame.transform.scale(pygame.image.load("Media/SnankKropp.png"), (20, 20))
         self.rect = self.image.get_rect(center=self.position)
 
 
