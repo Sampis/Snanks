@@ -1,3 +1,11 @@
+# Enbart Insperation
+# Enbart Insperation
+# Enbart Insperation
+# Enbart Insperation
+# Enbart Insperation
+# Enbart Insperation
+# Enbart Insperation
+# Enbart Insperation
 import pygame
 
 orm_storlek = 10
