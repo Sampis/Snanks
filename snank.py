@@ -9,13 +9,14 @@ class Snank:
         self.display_surface = screen
         self.position = pygame.math.Vector2(pos[0], pos[1])
         self.id = id
-        self.speed = 1
+        self.speed = 5
         self.rotation = 0
         self.direction = pygame.math.Vector2(0, 0)
         self.image = pygame.transform.scale(pygame.image.load("Media/SnankKropp.png"), (20, 20))
         self.rect = self.image.get_rect(center=self.position)
         self.bullets = pygame.sprite.Group()
         self.font = pygame.font.SysFont("IMPACT", 20)
+        self.can_shoot = True
 
     def detect_collision(self):
         if self.position[0] > screen_width-20:
@@ -48,10 +49,13 @@ class Snank:
             elif(keys[pygame.K_d]):
                 self.direction = 1, 0
                 self.rotation = 0
-            if(keys[pygame.K_SPACE] and self.direction != (0, 0)):
+            if(keys[pygame.K_SPACE] and self.direction != (0, 0) and self.can_shoot):
                 # Spawn bullet going direction
                 bullet = Bullet(self.position, self.rotation, self.direction, self.speed)
                 self.bullets.add(bullet)
+                self.can_shoot = False
+            elif(not keys[pygame.K_SPACE]):
+                self.can_shoot = True
 
         if self.id == 1:
             if(keys[pygame.K_UP]):
@@ -66,10 +70,14 @@ class Snank:
             elif(keys[pygame.K_RIGHT]):
                 self.direction = 1, 0
                 self.rotation = 0
-            if(keys[pygame.K_b] and self.direction != (0, 0)):
+            if(keys[pygame.K_b] and self.direction != (0, 0) and self.can_shoot):
                 # Spawn bullet going direction
                 bullet = Bullet(self.position, self.rotation, self.direction, self.speed)
                 self.bullets.add(bullet)
+                self.can_shoot = False
+            elif(not keys[pygame.K_b]):
+                self.can_shoot = True
+
         self.position[0] += self.direction[0] * self.speed
         self.position[1] += self.direction[1] * self.speed
         self.rect = self.image.get_rect(center=self.position)

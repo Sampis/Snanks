@@ -11,11 +11,11 @@ class Bullet(pygame.sprite.Sprite):
 
         self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load("Media/bullet.png"), (10, 5)), rot)
         # Fixa hastighets problemet
-        self.rect = self.image.get_rect(center=(pos[0]+10+(dir[0]*(speed*5)), pos[1]+10+(dir[1]*(speed*5))))
+        self.rect = self.image.get_rect(center=(pos[0]+(dir[0]*20)+10, pos[1]+(dir[1]*20)+10))
 
     def move_bullet(self):
-        self.rect.x += self.direction[0] * self.speed * 1
-        self.rect.y += self.direction[1] * self.speed * 1
+        self.rect.x += self.direction[0] * self.speed * 2
+        self.rect.y += self.direction[1] * self.speed * 2
 
     def update(self):
         self.move_bullet()
