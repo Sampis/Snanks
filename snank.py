@@ -65,7 +65,7 @@ class Snank:
                 self.can_shoot = True
 
         if self.id == 1:
-            if(keys[pygame.K_UP]):
+            if keys[pygame.K_UP]:
                 self.direction = 0, -1
                 self.rotation = 90
             elif(keys[pygame.K_LEFT]):
