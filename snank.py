@@ -1,6 +1,7 @@
 import pygame
 from settings import *
 from bullet import Bullet
+import time
 
 
 class Snank:
@@ -17,6 +18,8 @@ class Snank:
         self.bullets = pygame.sprite.Group()
         self.font = pygame.font.SysFont("IMPACT", 20)
         self.can_shoot = True
+        self.bullet_spawn_speed = 1
+        self.hitpoints = 3
 
     def detect_collision(self):
         if self.position[0] > screen_width-20:
@@ -31,30 +34,34 @@ class Snank:
         elif self.position[1] < 0:
             self.position[1] = 0
             self.direction = 0, 0
-        pygame.sprite.spritecollide(self, self.bullets, False)
-
+        if pygame.sprite.spritecollide(self, self.bullets, True):
+            self.hitpoints -= 1
+            if self.hitpoints == 0:
+                pass
 
     def get_input(self):
         keys = pygame.key.get_pressed()
+        start = time.time()
+        time_left = int(start + self.bullet_spawn_speed - time.time())
         if self.id == 0:
-            if(keys[pygame.K_w]):
+            if keys[pygame.K_w]:
                 self.direction = 0, -1
                 self.rotation = 90
-            elif(keys[pygame.K_a]):
+            elif keys[pygame.K_a] :
                 self.direction = -1, 0
                 self.rotation = 180
-            elif(keys[pygame.K_s]):
+            elif keys[pygame.K_s] :
                 self.direction = 0, 1
                 self.rotation = -90
-            elif(keys[pygame.K_d]):
+            elif keys[pygame.K_d]:
                 self.direction = 1, 0
                 self.rotation = 0
-            if(keys[pygame.K_SPACE] and self.direction != (0, 0) and self.can_shoot):
+            if keys[pygame.K_SPACE] and self.direction != (0, 0) and self.can_shoot:
                 # Spawn bullet going direction
                 bullet = Bullet(self.position, self.rotation, self.direction, self.speed)
                 self.bullets.add(bullet)
                 self.can_shoot = False
-            elif(not keys[pygame.K_SPACE]):
+            if time_left <= 0:
                 self.can_shoot = True
 
         if self.id == 1:
