@@ -1,5 +1,9 @@
 import pygame
 
+# Credit till Noel för han typ trolla fram det här från internet.
+# Dock jag tvung fix för han inte
+# Också jag hade mer planer med detta men fick slut på tid
+
 
 class Button:
     def __init__(self, image, x_pos, y_pos, text_input, screen):
