@@ -79,7 +79,7 @@ class Snank(pygame.sprite.Sprite):
                 self.rotation = 0
             if time_left <= 0:
                 self.can_shoot = True
-            if keys[pygame.K_b] and self.direction != (0, 0) and self.can_shoot:
+            if keys[pygame.K_RSHIFT] and self.direction != (0, 0) and self.can_shoot:
                 # Spawn bullet going in direction
                 bullet = Bullet(self.position, self.rotation, self.direction, self.speed, self.id)
                 self.bullets.add(bullet)

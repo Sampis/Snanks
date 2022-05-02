@@ -16,6 +16,7 @@ class Game:
         self.player_group = self.player1, self.player2
         self.startButton = Button(pygame.transform.scale(pygame.image.load("Media/StartknappSnanks.png"), (500, 250)), 950, 400, "", self.display_surface)
         self.end_screen_picture = pygame.transform.scale(pygame.image.load("Media/DetSlutSnanks.png"), (screen_width, screen_height))
+        self.backdrop = pygame.transform.scale(pygame.image.load("Media/SnanksBackdrop.png"), (screen_width, screen_height))
         self.start_pressed = False
         self.intro_screen()
 
@@ -24,6 +25,7 @@ class Game:
             self.main_game()
             self.start_pressed = True
         else:
+            self.display_surface.blit(self.backdrop, (0, 0))
             self.startButton.update()
 
     def collide(self):
